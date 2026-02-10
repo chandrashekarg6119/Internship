@@ -1,3 +1,4 @@
+//To check prime number
 package com.example;
 
 import java.util.Scanner;
@@ -27,3 +28,4 @@ class Primenum {
         }
     }
 }
+
