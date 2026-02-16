@@ -8,16 +8,23 @@ public class ElectricBill {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter no of units used: ");
         int units = sc.nextInt();
-        double bill=0;
-        if(units <=100){
-            bill = units * 5;
-        }
-        if(units <=200){
-            bill = (100*5)+(units-100)*7;
-        }
-        if(units >200){
-            bill = (100*5)+(100*7)+(units-200)*10;
-        }
+        
+//        double bill=0;
+//        if(units <=100){
+//            bill = units * 5;
+//        }
+//        if(units <=200){
+//            bill = (100*5)+(units-100)*7;
+//        }
+//        if(units >200){
+//            bill = (100*5)+(100*7)+(units-200)*10;
+//        }
+        
+        double bill = (units<=100)
+                ? units *5
+                :(units <=200)
+                ?(100*5)+(units-100)*7
+                :(100*5)+(100*7)+(units-200)*10;
         System.out.println("Total Electricity Bill = Rs."+bill);
     }
 }
