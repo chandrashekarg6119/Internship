@@ -1,0 +1,37 @@
+create database hospital;
+use hospital;
+
+create table department(
+dept_id int primary key,
+dept_name varchar(50) not null);
+
+select *from department;
+
+create table doctor(
+doctor_id int primary key,
+doctor_name varchar(50) not null,
+dept_id int,
+foreign key (dept_id) references department(dept_id)
+);
+
+select *from doctor;
+
+create table patient(
+patient_id int primary key,
+patient_name varchar(50) not null,
+phone varchar(15)
+);
+
+select *from patient;
+
+create table appointment(
+appointment_id int primary key,
+patient_id int,
+doctor_id int,
+appointment_date date,
+appointment_time time,
+foreign key (patient_id) references patient(patient_id),
+foreign key (doctor_id) references doctor(doctor_id)
+);
+
+select *from appointment;
