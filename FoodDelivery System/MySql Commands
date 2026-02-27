@@ -1,0 +1,69 @@
+create database food_delivery;
+
+use food_delivery;
+
+CREATE TABLE customer(
+   customer_id INT PRIMARY KEY,
+   customer_name VARCHAR(50),
+   customer_phone VARCHAR(15)
+);
+insert into customer(customer_id, customer_name, customer_phone)
+values(1, 'Vikas B', '998123456'),
+(2, 'Bharath', '778524136'),
+(3, 'Santhosh', '9685274112');
+
+select *from customer;
+
+CREATE TABLE restaurant(
+   restaurant_id INT PRIMARY KEY,
+   restaurant_name VARCHAR(100),
+   restaurant_phone VARCHAR(15)
+);
+insert into restaurant(restaurant_id, restaurant_name, restaurant_phone)
+values(101, 'Rasooi Delight', '8529637412'),
+(102, 'SPR Veg', '9517532846'),
+(103, 'Empire', '7539518246');
+
+select *from restaurant;
+
+CREATE TABLE food_items(
+   food_id INT PRIMARY KEY,
+   food_name VARCHAR(100),
+   food_price INT
+);
+insert into food_items(food_id, food_name, food_price)
+values(201, 'Full Meals', 299),
+(202, 'Mini Meals', 199),
+(203, 'Roti Meals', 259);
+
+select *from food_items;
+
+CREATE TABLE rider(
+   rider_id INT PRIMARY KEY,
+   rider_name VARCHAR(50),
+   rider_phone VARCHAR(15)
+);
+insert into rider(rider_id, rider_name, rider_phone)
+values(301, 'Prashanth', '8855661234'),
+(302, 'Vijay', '9876543218'),
+(303, 'Vivek', '9685744152');
+
+select *from rider;
+
+CREATE TABLE order_details(
+   order_id INT PRIMARY KEY,
+   customer_id INT,
+   restaurant_id INT,
+   food_id INT,
+   rider_id INT,
+   order_date DATE,
+   order_time TIME,
+   
+   FOREIGN KEY (customer_id) REFERENCES customer(customer_id),
+   FOREIGN KEY (restaurant_id) REFERENCES restaurant(restaurant_id),
+   FOREIGN KEY (food_id) REFERENCES food_items(food_id),
+   FOREIGN KEY (rider_id) REFERENCES rider(rider_id)
+);
+
+select *from order_details;
+
