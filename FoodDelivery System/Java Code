@@ -1,0 +1,235 @@
+import java.sql.*;
+import java.util.Scanner;
+
+public class FoodDelivery {
+
+    static Connection con;
+    static PreparedStatement ps;
+    static Scanner sc = new Scanner(System.in);
+
+    static String url = "jdbc:mysql://localhost:3306/food_delivery";
+    static String username = "root";
+    static String password = "Gcs@191204";
+
+    public static void main(String[] args) {
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection(url, username, password);
+
+            while (true) {
+                System.out.println("\n===== FOOD DELIVERY SYSTEM =====");
+                System.out.println("1. Add Customer");
+                System.out.println("2. Add Restaurant");
+                System.out.println("3. Add Food Item");
+                System.out.println("4. Add Rider");
+                System.out.println("5. Place Order");
+                System.out.println("6. View Orders");
+                System.out.println("7. Exit");
+                System.out.print("Enter choice: ");
+
+                int choice = sc.nextInt();
+
+                switch (choice) {
+                    case 1: addCustomer(); break;
+                    case 2: addRestaurant(); break;
+                    case 3: addFoodItem(); break;
+                    case 4: addRider(); break;
+                    case 5: placeOrder(); break;
+                    case 6: viewOrders(); break;
+                    case 7:
+                        con.close();
+                        System.out.println("Exiting...");
+                        return;
+                    default:
+                        System.out.println("Invalid choice!");
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    static void addCustomer() {
+        try {
+            System.out.print("Enter Customer ID: ");
+            int id = sc.nextInt();
+            sc.nextLine();
+
+            System.out.print("Enter Name: ");
+            String name = sc.nextLine();
+
+            System.out.print("Enter Phone: ");
+            String phone = sc.nextLine();
+
+            ps = con.prepareStatement(
+                    "INSERT INTO customer VALUES (?, ?, ?)"
+            );
+            ps.setInt(1, id);
+            ps.setString(2, name);
+            ps.setString(3, phone);
+
+            ps.executeUpdate();
+            System.out.println("Customer Added Successfully!");
+
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+
+    static void addRestaurant() {
+        try {
+            System.out.print("Enter Restaurant ID: ");
+            int id = sc.nextInt();
+            sc.nextLine();
+
+            System.out.print("Enter Restaurant Name: ");
+            String name = sc.nextLine();
+
+            System.out.print("Enter Phone: ");
+            String phone = sc.nextLine();
+
+            ps = con.prepareStatement(
+                    "INSERT INTO restaurant VALUES (?, ?, ?)"
+            );
+            ps.setInt(1, id);
+            ps.setString(2, name);
+            ps.setString(3, phone);
+
+            ps.executeUpdate();
+            System.out.println("Restaurant Added!");
+
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+
+    static void addFoodItem() {
+        try {
+            System.out.print("Enter Food ID: ");
+            int id = sc.nextInt();
+            sc.nextLine();
+
+            System.out.print("Enter Food Name: ");
+            String name = sc.nextLine();
+
+            System.out.print("Enter Price: ");
+            int price = sc.nextInt();
+
+            ps = con.prepareStatement(
+                    "INSERT INTO food_items VALUES (?, ?, ?)"
+            );
+            ps.setInt(1, id);
+            ps.setString(2, name);
+            ps.setInt(3, price);
+
+            ps.executeUpdate();
+            System.out.println("Food Item Added!");
+
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+    static void addRider() {
+        try {
+            System.out.print("Enter Rider ID: ");
+            int id = sc.nextInt();
+            sc.nextLine();
+
+            System.out.print("Enter Rider Name: ");
+            String name = sc.nextLine();
+
+            System.out.print("Enter Phone: ");
+            String phone = sc.nextLine();
+
+            ps = con.prepareStatement(
+                    "INSERT INTO rider VALUES (?, ?, ?)"
+            );
+            ps.setInt(1, id);
+            ps.setString(2, name);
+            ps.setString(3, phone);
+
+            ps.executeUpdate();
+            System.out.println("Rider Added!");
+
+        } catch (Exception e) {
+            System.out.println("Error: " +   e.getMessage());
+        }
+    }
+
+    static void placeOrder() {
+        try {
+            System.out.print("Enter Order ID: ");
+            int oid = sc.nextInt();
+
+            System.out.print("Enter Customer ID: ");
+            int cid = sc.nextInt();
+
+            System.out.print("Enter Restaurant ID: ");
+            int rid = sc.nextInt();
+
+            System.out.print("Enter Food ID: ");
+            int fid = sc.nextInt();
+
+            System.out.print("Enter Rider ID: ");
+            int riderId = sc.nextInt();
+            sc.nextLine();
+
+            System.out.print("Enter Order Date (YYYY-MM-DD): ");
+            String date = sc.nextLine();
+
+            System.out.print("Enter Order Time (HH:MM:SS): ");
+            String time = sc.nextLine();
+
+            ps = con.prepareStatement(
+                    "INSERT INTO order_details VALUES (?, ?, ?, ?, ?, ?, ?)"
+            );
+
+            ps.setInt(1, oid);
+            ps.setInt(2, cid);
+            ps.setInt(3, rid);
+            ps.setInt(4, fid);
+            ps.setInt(5, riderId);
+            ps.setDate(6, Date.valueOf(date));
+            ps.setTime(7, Time.valueOf(time));
+
+            ps.executeUpdate();
+            System.out.println("Order Placed Successfully!");
+
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+
+    static void viewOrders() {
+        try {
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(
+                    "SELECT * FROM order_details"
+            );
+
+            System.out.println("\n===== ORDER DETAILS =====");
+
+            while (rs.next()) {
+                System.out.println(
+                        "Order ID: " + rs.getInt("order_id") +
+                                " | Customer: " + rs.getInt("customer_id") +
+                                " | Restaurant: " + rs.getInt("restaurant_id") +
+                                " | Food: " + rs.getInt("food_id") +
+                                " | Rider: " + rs.getInt("rider_id") +
+                                " | Date: " + rs.getDate("order_date") +
+                                " | Time: " + rs.getTime("order_time")
+                );
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+}
