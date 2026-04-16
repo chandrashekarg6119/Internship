@@ -1,0 +1,8 @@
+.dashboard-wrapper { min-height: 100vh; background: var(--bg); }
+.dashboard-body { display: flex; }
+.dashboard-main {
+  flex: 1;
+  padding: 28px;
+  overflow-y: auto;
+  max-height: calc(100vh - 60px);
+}

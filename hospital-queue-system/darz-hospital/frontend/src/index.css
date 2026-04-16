@@ -1,0 +1,115 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #f0f4f8;
+  color: #1a202c;
+}
+
+:root {
+  --primary: #1a73e8;
+  --primary-dark: #1557b0;
+  --secondary: #34a853;
+  --danger: #ea4335;
+  --warning: #fbbc04;
+  --bg: #f0f4f8;
+  --white: #ffffff;
+  --gray-100: #f7fafc;
+  --gray-200: #edf2f7;
+  --gray-300: #e2e8f0;
+  --gray-500: #718096;
+  --gray-700: #4a5568;
+  --shadow: 0 2px 8px rgba(0,0,0,0.1);
+  --radius: 12px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.btn-primary { background: var(--primary); color: white; }
+.btn-primary:hover { background: var(--primary-dark); }
+.btn-danger { background: var(--danger); color: white; }
+.btn-danger:hover { background: #c5372b; }
+.btn-success { background: var(--secondary); color: white; }
+.btn-outline { background: transparent; border: 1px solid var(--primary); color: var(--primary); }
+.btn-outline:hover { background: var(--primary); color: white; }
+
+.card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 24px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.badge-pending { background: #fff3cd; color: #856404; }
+.badge-confirmed { background: #d1ecf1; color: #0c5460; }
+.badge-cancelled { background: #f8d7da; color: #721c24; }
+.badge-completed { background: #d4edda; color: #155724; }
+.badge-in_progress { background: #cce5ff; color: #004085; }
+
+input, select, textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--gray-300);
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: border 0.2s;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--primary);
+}
+
+label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--gray-700);
+  margin-bottom: 6px;
+}
+
+.form-group { margin-bottom: 16px; }
+
+.error-msg { color: var(--danger); font-size: 13px; margin-top: 4px; }
+
+.page-header {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: #1a202c;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.table th, .table td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--gray-200);
+  font-size: 14px;
+}
+.table th {
+  background: var(--gray-100);
+  font-weight: 600;
+  color: var(--gray-700);
+}
+.table tr:hover td { background: var(--gray-100); }

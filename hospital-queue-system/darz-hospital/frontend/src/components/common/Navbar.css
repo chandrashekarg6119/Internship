@@ -1,0 +1,35 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 14px 28px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.brand-icon { font-size: 24px; }
+.brand-name { font-size: 20px; font-weight: 700; color: var(--primary); }
+.brand-sub { font-size: 14px; color: var(--gray-500); }
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.user-name { font-size: 14px; font-weight: 500; color: var(--gray-700); }
+.role-badge {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.role-patient { background: #e3f2fd; color: #1565c0; }
+.role-doctor { background: #e8f5e9; color: #2e7d32; }
+.role-admin { background: #fce4ec; color: #c62828; }
