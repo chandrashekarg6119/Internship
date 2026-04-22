@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ARENA — Sports Gallery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Teko:wght@300;400;500;600;700&family=Oswald:wght@200;300;400;500;600;700&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+  <!-- PARTICLE CANVAS -->
+  <canvas id="particles"></canvas>
+
+  <!-- SCANLINE OVERLAY -->
+  <div class="scanlines"></div>
+
+  <!-- HEADER -->
+  <header class="hdr">
+    <div class="hdr-left">
+      <div class="logo">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text">ARENA<span class="logo-sub">LIVE</span></span>
+      </div>
+      <div class="live-badge">
+        <span class="live-dot"></span>LIVE
+      </div>
+    </div>
+    <nav class="hdr-nav">
+      <a href="#">Football</a>
+      <a href="#">Basketball</a>
+      <a href="#">Combat</a>
+      <a href="#">Racing</a>
+      <a href="#">Tennis</a>
+      <a href="#" class="hdr-cta">Watch Now</a>
+    </nav>
+    <div class="score-ticker" id="scoreTicker">
+      <span class="st-item">🏈 Chiefs <strong>24</strong> — <strong>17</strong> Bills</span>
+      <span class="st-sep">|</span>
+      <span class="st-item">🏀 Lakers <strong>108</strong> — <strong>102</strong> Celtics</span>
+      <span class="st-sep">|</span>
+      <span class="st-item">⚽ Man City <strong>3</strong> — <strong>1</strong> Arsenal</span>
+      <span class="st-sep">|</span>
+      <span class="st-item">🎾 Djokovic <strong>6-4</strong> <strong>7-5</strong> Alcaraz</span>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-eyebrow">
+      <span class="eyebrow-line"></span>
+      <span class="eyebrow-text">Season 2026 · All Sports · All Action</span>
+      <span class="eyebrow-line"></span>
+    </div>
+    <h1 class="hero-title">
+      <span class="ht-line1">CHAMPION</span>
+      <span class="ht-line2">MOMENTS</span>
+    </h1>
+    <div class="hero-stats">
+      <div class="hs-item"><span class="hs-num" data-target="128">0</span><span class="hs-label">Sports</span></div>
+      <div class="hs-div"></div>
+      <div class="hs-item"><span class="hs-num" data-target="4800">0</span><span class="hs-label">Athletes</span></div>
+      <div class="hs-div"></div>
+      <div class="hs-item"><span class="hs-num" data-target="96">0</span><span class="hs-label">Nations</span></div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <main class="gallery-shell">
+    <div class="gallery" id="gallery">
+
+      <!-- CARD 1: Football -->
+      <div class="card active" data-sport="football" data-idx="1">
+        <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=1000&q=85')"></div>
+        <div class="card-noise"></div>
+        <div class="card-grad"></div>
+        <div class="card-diagonal"></div>
+
+        <div class="card-tab">
+          <span class="ct-num">01</span>
+          <span class="ct-sport">FOOTBALL</span>
+        </div>
+
+        <div class="card-body">
+          <div class="cb-sport-icon">🏈</div>
+          <div class="cb-tag">NFL · PLAYOFFS</div>
+          <h2 class="cb-title">GRIDIRON<br/><em>GLORY</em></h2>
+          <p class="cb-desc">Where legends are forged in mud, sweat and 60 minutes of pure war.</p>
+          <div class="cb-stats">
+            <div class="cbs-item"><span class="cbs-val">4</span><span class="cbs-lbl">Quarters</span></div>
+            <div class="cbs-item"><span class="cbs-val">100</span><span class="cbs-lbl">Yards</span></div>
+            <div class="cbs-item"><span class="cbs-val">53</span><span class="cbs-lbl">Warriors</span></div>
+          </div>
+          <button class="cb-btn">
+            <span>Watch Highlights</span>
+            <span class="btn-arrow">▶</span>
+          </button>
+        </div>
+
+        <div class="card-number-bg">01</div>
+        <div class="card-accent-bar"></div>
+      </div>
+
+      <!-- CARD 2: Basketball -->
+      <div class="card" data-sport="basketball" data-idx="2">
+        <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1546519638-68e109498ffc?w=1000&q=85')"></div>
+        <div class="card-noise"></div>
+        <div class="card-grad"></div>
+        <div class="card-diagonal"></div>
+
+        <div class="card-tab">
+          <span class="ct-num">02</span>
+          <span class="ct-sport">BASKETBALL</span>
+        </div>
+
+        <div class="card-body">
+          <div class="cb-sport-icon">🏀</div>
+          <div class="cb-tag">NBA · FINALS</div>
+          <h2 class="cb-title">SLAM<br/><em>DYNASTY</em></h2>
+          <p class="cb-desc">Ten feet of air between a man and immortality. Jump. Fly. Conquer.</p>
+          <div class="cb-stats">
+            <div class="cbs-item"><span class="cbs-val">48</span><span class="cbs-lbl">Minutes</span></div>
+            <div class="cbs-item"><span class="cbs-val">110</span><span class="cbs-lbl">Avg Pts</span></div>
+            <div class="cbs-item"><span class="cbs-val">5</span><span class="cbs-lbl">On Court</span></div>
+          </div>
+          <button class="cb-btn">
+            <span>Watch Highlights</span>
+            <span class="btn-arrow">▶</span>
+          </button>
+        </div>
+
+        <div class="card-number-bg">02</div>
+        <div class="card-accent-bar"></div>
+      </div>
+
+      <!-- CARD 3: Soccer -->
+      <div class="card" data-sport="soccer" data-idx="3">
+        <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=1000&q=85')"></div>
+        <div class="card-noise"></div>
+        <div class="card-grad"></div>
+        <div class="card-diagonal"></div>
+
+        <div class="card-tab">
+          <span class="ct-num">03</span>
+          <span class="ct-sport">FOOTBALL</span>
+        </div>
+
+        <div class="card-body">
+          <div class="cb-sport-icon">⚽</div>
+          <div class="cb-tag">UEFA · CHAMPIONS</div>
+          <h2 class="cb-title">THE<br/><em>BEAUTIFUL GAME</em></h2>
+          <p class="cb-desc">Ninety minutes. One ball. Billions watching. Zero mercy.</p>
+          <div class="cb-stats">
+            <div class="cbs-item"><span class="cbs-val">90</span><span class="cbs-lbl">Minutes</span></div>
+            <div class="cbs-item"><span class="cbs-val">11</span><span class="cbs-lbl">Players</span></div>
+            <div class="cbs-item"><span class="cbs-val">3.5B</span><span class="cbs-lbl">Fans</span></div>
+          </div>
+          <button class="cb-btn">
+            <span>Watch Highlights</span>
+            <span class="btn-arrow">▶</span>
+          </button>
+        </div>
+
+        <div class="card-number-bg">03</div>
+        <div class="card-accent-bar"></div>
+      </div>
+
+      <!-- CARD 4: MMA/Boxing -->
+      <div class="card" data-sport="combat" data-idx="4">
+        <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=1000&q=85')"></div>
+        <div class="card-noise"></div>
+        <div class="card-grad"></div>
+        <div class="card-diagonal"></div>
+
+        <div class="card-tab">
+          <span class="ct-num">04</span>
+          <span class="ct-sport">COMBAT</span>
+        </div>
+
+        <div class="card-body">
+          <div class="cb-sport-icon">🥊</div>
+          <div class="cb-tag">UFC · HEAVYWEIGHT</div>
+          <h2 class="cb-title">IRON<br/><em>WILL</em></h2>
+          <p class="cb-desc">The purest test of human will. One cage. One winner. No excuses.</p>
+          <div class="cb-stats">
+            <div class="cbs-item"><span class="cbs-val">5</span><span class="cbs-lbl">Rounds</span></div>
+            <div class="cbs-item"><span class="cbs-val">265</span><span class="cbs-lbl">Lbs Max</span></div>
+            <div class="cbs-item"><span class="cbs-val">1</span><span class="cbs-lbl">Champion</span></div>
+          </div>
+          <button class="cb-btn">
+            <span>Watch Highlights</span>
+            <span class="btn-arrow">▶</span>
+          </button>
+        </div>
+
+        <div class="card-number-bg">04</div>
+        <div class="card-accent-bar"></div>
+      </div>
+
+      <!-- CARD 5: Tennis -->
+      <div class="card" data-sport="tennis" data-idx="5">
+        <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1617083934555-3dc0a12e5a5d?w=1000&q=85')"></div>
+        <div class="card-noise"></div>
+        <div class="card-grad"></div>
+        <div class="card-diagonal"></div>
+
+        <div class="card-tab">
+          <span class="ct-num">05</span>
+          <span class="ct-sport">TENNIS</span>
+        </div>
+
+        <div class="card-body">
+          <div class="cb-sport-icon">🎾</div>
+          <div class="cb-tag">GRAND SLAM · WIMBLEDON</div>
+          <h2 class="cb-title">ACE<br/><em>DOMINION</em></h2>
+          <p class="cb-desc">200mph serve. 0.3 seconds to react. Grass stains and glory.</p>
+          <div class="cb-stats">
+            <div class="cbs-item"><span class="cbs-val">5</span><span class="cbs-lbl">Sets</span></div>
+            <div class="cbs-item"><span class="cbs-val">200</span><span class="cbs-lbl">MPH Serve</span></div>
+            <div class="cbs-item"><span class="cbs-val">4</span><span class="cbs-lbl">Slams</span></div>
+          </div>
+          <button class="cb-btn">
+            <span>Watch Highlights</span>
+            <span class="btn-arrow">▶</span>
+          </button>
+        </div>
+
+        <div class="card-number-bg">05</div>
+        <div class="card-accent-bar"></div>
+      </div>
+
+    </div>
+
+    <!-- BOTTOM CONTROLS -->
+    <div class="controls">
+      <div class="ctrl-dots" id="ctrlDots">
+        <button class="cdot active" data-idx="0">01</button>
+        <button class="cdot" data-idx="1">02</button>
+        <button class="cdot" data-idx="2">03</button>
+        <button class="cdot" data-idx="3">04</button>
+        <button class="cdot" data-idx="4">05</button>
+      </div>
+      <div class="ctrl-progress">
+        <div class="cp-bar" id="cpBar"></div>
+      </div>
+      <div class="ctrl-arrows">
+        <button class="carr" id="prevBtn">◀</button>
+        <button class="carr" id="nextBtn">▶</button>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- TICKER -->
+  <div class="bticker">
+    <div class="bticker-inner">
+      <span>FOOTBALL</span><span class="bsep">✦</span>
+      <span>BASKETBALL</span><span class="bsep">✦</span>
+      <span>SOCCER</span><span class="bsep">✦</span>
+      <span>COMBAT SPORTS</span><span class="bsep">✦</span>
+      <span>TENNIS</span><span class="bsep">✦</span>
+      <span>RACING</span><span class="bsep">✦</span>
+      <span>SWIMMING</span><span class="bsep">✦</span>
+      <span>ATHLETICS</span><span class="bsep">✦</span>
+      <span>FOOTBALL</span><span class="bsep">✦</span>
+      <span>BASKETBALL</span><span class="bsep">✦</span>
+      <span>SOCCER</span><span class="bsep">✦</span>
+      <span>COMBAT SPORTS</span><span class="bsep">✦</span>
+      <span>TENNIS</span><span class="bsep">✦</span>
+      <span>RACING</span><span class="bsep">✦</span>
+      <span>SWIMMING</span><span class="bsep">✦</span>
+      <span>ATHLETICS</span><span class="bsep">✦</span>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="ftr-brand">ARENA<span class="ftr-dot">.</span>LIVE</div>
+    <div class="ftr-mid">THE HOME OF CHAMPIONS · EST. 2026</div>
+    <div class="ftr-right">
+      <span>All Rights Reserved</span>
+      <span class="ftr-socials">
+        <a href="#">TW</a>
+        <a href="#">IG</a>
+        <a href="#">YT</a>
+      </span>
+    </div>
+  </footer>
+
+  <script src="js/gallery.js"></script>
+</body>
+</html>
