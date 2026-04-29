@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Spends — Expense Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="grain"></div>
+
+  <header>
+    <div class="logo">
+      <span class="logo-icon">◈</span>
+      <span class="logo-text"><b>My Spends</b></span>
+    </div>
+    <nav>
+      <button class="nav-btn active" data-view="dashboard">Dashboard</button>
+      <button class="nav-btn" data-view="transactions">Transactions</button>
+      <button class="nav-btn" data-view="analytics">Analytics</button>
+    </nav>
+    <button class="add-btn" id="openModal">+ Add Expense</button>
+  </header>
+
+  <!-- Dashboard View -->
+  <main id="view-dashboard" class="view active">
+    <section class="hero">
+      <div class="hero-label">Total Spent</div>
+      <div class="hero-amount" id="totalSpent">₹0.00</div>
+      <div class="hero-sub" id="monthLabel">This Month</div>
+    </section>
+
+    <section class="cards">
+      <div class="card card-budget">
+        <div class="card-label">Monthly Budget</div>
+        <div class="card-value" id="budgetDisplay">₹0</div>
+        <input type="number" id="budgetInput" placeholder="Set budget..." class="budget-input"/>
+        <button class="set-budget-btn" id="setBudget">Set</button>
+        <div class="budget-bar-wrap">
+          <div class="budget-bar" id="budgetBar"></div>
+        </div>
+        <div class="budget-pct" id="budgetPct">—</div>
+      </div>
+
+      <div class="card card-top">
+        <div class="card-label">Top Category</div>
+        <div class="card-icon-big" id="topCatIcon">—</div>
+        <div class="card-value" id="topCatName">No data</div>
+        <div class="card-sub" id="topCatAmount"></div>
+      </div>
+
+      <div class="card card-count">
+        <div class="card-label">Transactions</div>
+        <div class="card-value" id="txCount">0</div>
+        <div class="card-sub">recorded expenses</div>
+      </div>
+
+      <div class="card card-avg">
+        <div class="card-label">Average Expense</div>
+        <div class="card-value" id="avgExpense">₹0</div>
+        <div class="card-sub">per transaction</div>
+      </div>
+    </section>
+
+    <section class="recent-section">
+      <h2 class="section-title">Recent Transactions</h2>
+      <div id="recentList" class="tx-list"></div>
+    </section>
+  </main>
+
+  <!-- Transactions View -->
+  <main id="view-transactions" class="view">
+    <div class="tx-header">
+      <h2 class="section-title">All Transactions</h2>
+      <div class="filters">
+        <select id="filterCat" class="filter-select">
+          <option value="">All Categories</option>
+        </select>
+        <select id="filterSort" class="filter-select">
+          <option value="newest">Newest First</option>
+          <option value="oldest">Oldest First</option>
+          <option value="high">Highest Amount</option>
+          <option value="low">Lowest Amount</option>
+        </select>
+        <button class="clear-btn" id="clearAll">Clear All</button>
+      </div>
+    </div>
+    <div id="allTxList" class="tx-list"></div>
+  </main>
+
+  <!-- Analytics View -->
+  <main id="view-analytics" class="view">
+    <h2 class="section-title">Spending Breakdown</h2>
+    <div class="analytics-grid">
+      <div class="chart-card">
+        <div class="chart-title">By Category</div>
+        <canvas id="pieCanvas" width="260" height="260"></canvas>
+        <div id="legendList" class="legend-list"></div>
+      </div>
+      <div class="chart-card chart-bar-card">
+        <div class="chart-title">Daily Spending (Last 14 Days)</div>
+        <canvas id="barCanvas" width="500" height="220"></canvas>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <button class="modal-close" id="closeModal">✕</button>
+      <h3 class="modal-title">New Expense</h3>
+      <div class="form-group">
+        <label>Description</label>
+        <input type="text" id="expDesc" placeholder="e.g. Lunch at Café"/>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Amount (₹)</label>
+          <input type="number" id="expAmount" placeholder="0.00" min="0"/>
+        </div>
+        <div class="form-group">
+          <label>Date</label>
+          <input type="date" id="expDate"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Category</label>
+        <div class="cat-grid" id="catGrid"></div>
+      </div>
+      <div class="form-group">
+        <label>Note (optional)</label>
+        <input type="text" id="expNote" placeholder="Any extra details..."/>
+      </div>
+      <button class="submit-btn" id="submitExpense">Add Expense</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
